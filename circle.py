@@ -1,3 +1,7 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+
 import math
 
 class Circle:
@@ -5,6 +9,23 @@ class Circle:
         self.center_x = center_x
         self.center_y = center_y
         self.radius = radius
+
+    def plot(self):
+        theta = np.linspace(0, 2*np.pi, 100)  # Generate angles from 0 to 2*pi
+        x = self.radius * np.cos(theta) + self.center_x  # Calculate x-coordinates
+        y = self.radius * np.sin(theta) + self.center_y  # Calculate y-coordinates
+
+        # Plot the circle
+        plt.plot(x, y)
+
+        plt.xlabel('x')
+        plt.ylabel('y')
+        plt.title('Circle')
+        plt.axis('equal')  # Set equal scaling on both axes
+        plt.grid(True)
+        plt.axhline(0, color='black', linewidth=0.5)  # Add x-axis
+        plt.axvline(0, color='black', linewidth=0.5)  # Add y-axis
+        plt.show()
 
     def area(self):
         # Calculate the area of the circle
